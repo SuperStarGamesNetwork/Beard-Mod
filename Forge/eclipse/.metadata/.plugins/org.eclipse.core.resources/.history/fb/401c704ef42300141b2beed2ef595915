@@ -1,0 +1,74 @@
+package perry.mods.IronManMod.Item;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
+
+public class ItemRepulsor extends ItemTool {
+
+	/** an array of the blocks this Tool is effective against */
+	public static final Block[] blocksEffectiveAgainst = new Block[] {
+			Blocks.cobblestone, Blocks.double_stone_slab, Blocks.stone_slab,
+			Blocks.stone, Blocks.sandstone, Blocks.mossy_cobblestone,
+			Blocks.iron_ore, Blocks.iron_block, Blocks.coal_block,
+			Blocks.gold_block, Blocks.gold_ore, Blocks.diamond_ore,
+			Blocks.diamond_block, Blocks.ice, Blocks.netherrack,
+			Blocks.lapis_ore, Blocks.lapis_block, Blocks.redstone_ore,
+			Blocks.lit_redstone_ore, Blocks.rail, Blocks.detector_rail,
+			Blocks.golden_rail, Blocks.activator_rail, Blocks.planks,
+			Blocks.bookshelf, Block.logs, Blocks.chest,
+			Blocks.pumpkin, Blocks.pumpkinLantern,
+			Blocks.grass, Blocks.dirt, Blocks.sand, Blocks.gravel, Blocks.snow,
+			Blocks.snow, Blocks.clay, Blocks.farmland,
+			Blocks.soul_sand, Blocks.mycelium };
+
+	public ItemRepulsor(int par1, EnumToolMaterial par2EnumToolMaterial) {
+		super(par1, 2.0F, par2EnumToolMaterial, blocksEffectiveAgainst);
+	}
+
+	/**
+	 * Returns if the item (tool) can harvest results from the block type.
+	 */
+	public boolean canHarvestBlock(Block par1Block) {
+		return par1Block == Blocks.obsidian ? this.toolMaterial
+				.getHarvestLevel() == 3
+				: (par1Block != Blocks.diamond_block
+						&& par1Block != Blocks.diamond_ore ? (par1Block != Blocks.emerald_ore
+						&& par1Block != Blocks.emerald_block ? (par1Block != Blocks.gold_block
+						&& par1Block != Blocks.gold_ore ? (par1Block != Blocks.iron_block
+						&& par1Block != Blocks.iron_ore ? (par1Block != Blocks.lapis_block
+						&& par1Block != Blocks.lapis_ore ? (par1Block != Blocks.redstone_ore
+						&& par1Block != Blocks.lit_redstone_ore ? (par1Block.getMaterial() == Material.rock ? true
+						: (par1Block.getMaterial() == Material.iron ? true
+								: par1Block.getMaterial() == Material.anvil ? true
+										: (par1Block == Blocks.snow ? true
+												: par1Block == Blocks.snow)))
+						: this.toolMaterial.getHarvestLevel() >= 2)
+						: this.toolMaterial.getHarvestLevel() >= 1)
+						: this.toolMaterial.getHarvestLevel() >= 1)
+						: this.toolMaterial.getHarvestLevel() >= 2)
+						: this.toolMaterial.getHarvestLevel() >= 2)
+						: this.toolMaterial.getHarvestLevel() >= 2);
+	}
+
+	/**
+	 * Returns the strength of the stack against a given block. 1.0F base,
+	 * (Quality+1)*2 if correct blocktype, 1.5F if sword
+	 */
+	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+		return par2Block != null
+				&& (par2Block.getMaterial() == Material.iron
+						|| par2Block.getMaterial() == Material.anvil
+						|| par2Block.getMaterial() == Material.rock
+						|| par2Block.getMaterial() == Material.wood
+						|| par2Block.getMaterial() == Material.plants || par2Block.getMaterial() == Material.vine) ? this.efficiencyOnProperMaterial
+				: super.getStrVsBlock(par1ItemStack, par2Block);
+	}
+
+	public void registerIcons(IIconRegister par1iconRegister) {
+		itemIcon = par1iconRegister.registerIcon("IronManMod:Repulsor");
+	}
+}

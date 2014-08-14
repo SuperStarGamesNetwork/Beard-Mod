@@ -1,0 +1,305 @@
+package perry.mods.IronManMod.common;
+
+/**
+ * Imports
+ * 
+ * This blue looks awesome
+ */
+
+import java.util.Scanner;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.util.EnumHelper;
+import perry.mods.IronManMod.Item.ItemIronManArmorBase;
+import perry.mods.IronManMod.Item.ItemPalladium;
+import perry.mods.IronManMod.Item.ItemPalladiumCore;
+import perry.mods.IronManMod.Item.ItemPowerCoreSocket;
+import perry.mods.IronManMod.Item.ItemPulseThrusters;
+import perry.mods.IronManMod.Item.ItemRepulsor;
+import perry.mods.IronManMod.Item.ItemTitanium;
+import perry.mods.IronManMod.Item.ItemTitaniumPlating;
+import perry.mods.IronManMod.Item.ItemVibranium;
+import perry.mods.IronManMod.Item.ItemVibraniumCore;
+import perry.mods.IronManMod.armor.HulkbusterArmor;
+import perry.mods.IronManMod.armor.IronManArmor;
+import perry.mods.IronManMod.armor.TitaniumArmor;
+import perry.mods.IronManMod.block.BlockPalladiumBlock;
+import perry.mods.IronManMod.block.BlockPalladiumOre;
+import perry.mods.IronManMod.block.BlockTitaniumBlock;
+import perry.mods.IronManMod.block.BlockTitaniumOre;
+import perry.mods.IronManMod.block.BlockVibraniumBlock;
+import perry.mods.IronManMod.block.BlockVibraniumOre;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
+
+@Mod(modid = "Iron Man Mod", name = "Iron Man Mod", version = "1.0 Alpha Testing")
+@NetworkMod(serverSideRequired = false, clientSideRequired = true)
+public class IronManMod {
+
+	@SidedProxy(clientSide = "perry.mods.IronManMod.common.ClientProxy", serverSide = "perry.mods.IronManMod.common.CommonProxy")
+	public static CommonProxy proxy;
+	public static void init(FMLInitializationEvent evt) {
+
+		proxy.registerHandlers();
+	}
+
+	/** Item Registery */
+
+	public static Item Palladium;
+	public static Item Vibranium;
+	public static Item Titanium;
+	public static Item TitaniumPlating;
+	public static Item PulseThrusters;
+	public static Item PalladiumCore;
+	public static Item VibraniumCore;
+	public static Item TitaniumChestplate;
+	public static Item IronManBoots;
+	public static Item IronManBodyArmor;
+	public static Item IronManArmorBase;
+	public static Item IronManLeggings;
+	public static Item PowerCoreSocket;
+	public static Item TitaniumLeggings;
+	public static Item TitaniumBooties;
+	public static Item IronManHelmit;
+	public static Item Repulsor;
+	public static Item TitaniumHelmit;
+	public static Item HulkbusterBody;
+	public static Item HulkbusterHead;
+	public static Item HulkbusterLeggs;
+	public static Item HulkbusterBoots;
+
+	/** Block Registery */
+
+	public static Block PalladiumBlock;
+	public static Block PalladiumOre;
+	public static Block TitaniumOre;
+	public static Block TitaniumBlock;
+	public static Block VibraniumBlock;
+	public static Block VibraniumOre;
+
+	String hi;
+
+	Scanner input = new Scanner(System.in);
+
+	public static CreativeTabs tabIronManMod = new CreativeTabs("tabCustom") {
+		public ItemStack getIconItemStack() {
+			return new ItemStack(TitaniumPlating, 1, 0);
+		}
+	};
+
+	public static EnumArmorMaterial TitaniumArmor = EnumHelper
+			.addArmorMaterial("Titanium", 33, new int[] { 3, 8, 6, 3 }, 10);
+	public static EnumArmorMaterial IronManArmor = EnumHelper.addArmorMaterial(
+			"IRONMAN", 19800, new int[] { 13, 18, 16, 13 }, 0);
+	public static EnumArmorMaterial HulkbusterArmor = EnumHelper
+			.addArmorMaterial("HULKBUSTER", 19800,
+					new int[] { 16, 21, 19, 16 }, 0);
+	public static ToolMaterial IronManTool = EnumHelper.addToolMaterial(
+			"IronMan", 3, 19800, 20.0F, 20.0F, 10);
+
+	public IronManMod() {
+
+		/** Boot prosecces */
+
+		System.out.println("Starting to activate the IronMan Mod Please wait");
+		System.out.println("loading");
+		System.out.println("loading.");
+		System.out.println("loading..");
+		System.out.println("loading...");
+		System.out.println("Done!!!!!!!!!!!!!!!!!!!!!!!");
+
+		// Armor
+
+		HulkbusterHead = new HulkbusterArmor(2012, HulkbusterArmor, 0, 0,
+				"HulkBuster").setUnlocalizedName("HulkBusterHead")
+				.setCreativeTab(tabIronManMod);
+		HulkbusterBody = new HulkbusterArmor(2011, HulkbusterArmor, 0, 1,
+				"HulkBuster").setUnlocalizedName("HulkBusterBody")
+				.setCreativeTab(tabIronManMod);
+		HulkbusterLeggs = new HulkbusterArmor(2010, HulkbusterArmor, 0, 2,
+				"HulkBuster").setUnlocalizedName("HulkBusterLeggs")
+				.setCreativeTab(tabIronManMod);
+		HulkbusterBoots = new HulkbusterArmor(2009, HulkbusterArmor, 0, 3,
+				"HulkBuster").setUnlocalizedName("HulkBusterBoots")
+				.setCreativeTab(tabIronManMod);
+		IronManHelmit = new IronManArmor(2008, IronManArmor, 0, 0, "IronMan")
+				.setUnlocalizedName("IronManHelmit").setCreativeTab(
+						tabIronManMod);
+		IronManBodyArmor = new IronManArmor(2007, IronManArmor, 0, 1, "IronMan")
+				.setUnlocalizedName("IronManBodyArmor").setCreativeTab(
+						tabIronManMod);
+		IronManLeggings = new IronManArmor(2006, IronManArmor, 0, 2, "IronMan")
+				.setUnlocalizedName("IronManLeggings").setCreativeTab(
+						tabIronManMod);
+		IronManBoots = new IronManArmor(2005, IronManArmor, 0, 3, "IronMan")
+				.setUnlocalizedName("IronManBoots").setCreativeTab(
+						tabIronManMod);
+		TitaniumHelmit = new TitaniumArmor(2004, TitaniumArmor, 0, 0,
+				"Titanium").setUnlocalizedName("TitaniumHelmit")
+				.setCreativeTab(tabIronManMod);
+		TitaniumChestplate = new TitaniumArmor(2003, TitaniumArmor, 0, 1,
+				"Titanium").setUnlocalizedName("TitaniumChestplate")
+				.setCreativeTab(tabIronManMod);
+		TitaniumLeggings = new TitaniumArmor(2002, TitaniumArmor, 0, 2,
+				"Titanium").setUnlocalizedName("TitaniumLeggings")
+				.setCreativeTab(tabIronManMod);
+		TitaniumBooties = new TitaniumArmor(2001, TitaniumArmor, 0, 3,
+				"Titanium").setUnlocalizedName("TitaniumBooties")
+				.setCreativeTab(tabIronManMod);
+
+		// Items
+
+		Repulsor = new ItemRepulsor(1709, IronManTool).setUnlocalizedName(
+				"Repulsor").setCreativeTab(tabIronManMod);
+		PowerCoreSocket = new ItemPowerCoreSocket(1708).setUnlocalizedName(
+				"PowerCoreSocket").setCreativeTab(tabIronManMod);
+		IronManArmorBase = new ItemIronManArmorBase(1707).setUnlocalizedName(
+				"IronManArmorBase").setCreativeTab(tabIronManMod);
+		TitaniumPlating = new ItemTitaniumPlating(1706).setUnlocalizedName(
+				"TitaniumPlating").setCreativeTab(tabIronManMod);
+		Titanium = new ItemTitanium(1705).setUnlocalizedName("Titanium")
+				.setCreativeTab(tabIronManMod);
+		PulseThrusters = new ItemPulseThrusters(1704).setUnlocalizedName(
+				"PulseThrusters").setCreativeTab(tabIronManMod);
+		Vibranium = new ItemVibranium(1703).setUnlocalizedName("Vibranium")
+				.setCreativeTab(tabIronManMod);
+		VibraniumCore = new ItemVibraniumCore(1702).setUnlocalizedName(
+				"VibraniumCore").setCreativeTab(tabIronManMod);
+		Palladium = new ItemPalladium(1701).setUnlocalizedName("Palladium")
+				.setCreativeTab(tabIronManMod);
+		PalladiumCore = new ItemPalladiumCore(1700).setUnlocalizedName(
+				"PalladiumCore").setCreativeTab(tabIronManMod);
+
+		// Blocks
+
+		TitaniumBlock = new BlockTitaniumBlock(1505, Material.iron)
+				.setUnlocalizedName("TitaniumBlock").setHardness(3.0F)
+				.setResistance(10.0F).setCreativeTab(tabIronManMod);
+		TitaniumOre = new BlockTitaniumOre(1504, Material.rock)
+				.setUnlocalizedName("TitaniumOre").setHardness(3.0F)
+				.setResistance(10.0F).setCreativeTab(tabIronManMod);
+		VibraniumOre = new BlockVibraniumOre(1503, Material.rock)
+				.setUnlocalizedName("VibraniumOre").setHardness(3.0F)
+				.setResistance(10.0F).setCreativeTab(tabIronManMod);
+		VibraniumBlock = new BlockVibraniumBlock(1506, Material.iron)
+				.setUnlocalizedName("VibraniumBlock").setHardness(3.5F)
+				.setResistance(10.0F).setCreativeTab(tabIronManMod);
+		PalladiumOre = new BlockPalladiumOre(1502, Material.rock)
+				.setUnlocalizedName("PalladiumOre").setHardness(3.0F)
+				.setResistance(10.0F).setCreativeTab(tabIronManMod);
+		PalladiumBlock = new BlockPalladiumBlock(1501, Material.rock)
+				.setUnlocalizedName("PalladiumBlock").setHardness(3.5F)
+				.setResistance(10.0F).setCreativeTab(tabIronManMod);
+
+		/** Block registering */
+
+		GameRegistry.registerBlock(VibraniumBlock, "Vibranium Block");
+		GameRegistry.registerBlock(TitaniumOre, "Titanium Ore");
+		GameRegistry.registerBlock(VibraniumOre, "Vibranium Ore");
+		GameRegistry.registerBlock(PalladiumOre, "Palladium Ore");
+		GameRegistry.registerBlock(PalladiumBlock, "Palladium Block");
+		GameRegistry.registerBlock(TitaniumBlock, "Titanium Block");
+
+		/** Names */
+
+		LanguageRegistry.addName(HulkbusterBoots, "HulkBuster Boots");
+		LanguageRegistry.addName(HulkbusterLeggs, "HulkBuster Leggs");
+		LanguageRegistry.addName(HulkbusterHead, "HulkBuster Head");
+		LanguageRegistry.addName(HulkbusterBody, "HulkBuster Body");
+		LanguageRegistry.addName(Palladium, "Palladium Ingot");
+		LanguageRegistry.addName(Vibranium, "Vibranium Ingot");
+		LanguageRegistry.addName(PalladiumBlock, "Palladium Block");
+		LanguageRegistry.addName(Titanium, "Titanium Ingot");
+		LanguageRegistry.addName(TitaniumPlating, "Titanium Plating");
+		LanguageRegistry.addName(VibraniumOre, "Vibranium Ore");
+		LanguageRegistry.addName(PalladiumOre, "Palladium Ore");
+		LanguageRegistry.addName(VibraniumCore, "Vibranium Core");
+		LanguageRegistry.addName(TitaniumChestplate, "Titanium Chestplate");
+		LanguageRegistry.addName(PalladiumCore, "Palladium Core");
+		LanguageRegistry.addName(PulseThrusters, "Pulse Thrusters");
+		LanguageRegistry.addName(TitaniumOre, "Titanium Ore");
+		LanguageRegistry.addName(IronManBoots, "Mk3 Boots");
+		LanguageRegistry.addName(IronManBodyArmor, "Mk3 Body Armor");
+		LanguageRegistry.addName(IronManArmorBase, "IronMan Armor Base");
+		LanguageRegistry.addName(IronManLeggings, "Mk3 Leggings");
+		LanguageRegistry.addName(PowerCoreSocket, "PowerCore Socket");
+		LanguageRegistry.addName(TitaniumLeggings, "Titanium Leggings");
+		LanguageRegistry.addName(IronManHelmit, "Mk3 Helmit");
+		LanguageRegistry.addName(TitaniumBooties, "Titanium Booties");
+		LanguageRegistry.addName(Repulsor, "Repulsors");
+		LanguageRegistry.addName(TitaniumBlock, "Titanium Block");
+		LanguageRegistry.addName(VibraniumBlock, "Vibranium Block");
+		LanguageRegistry.instance().addStringLocalization(
+				"itemGroup.tabCustom", "en_US", "Iron Man Mod");
+
+		/** Crafting recipes */
+
+		GameRegistry.addRecipe(new ItemStack(PalladiumBlock, 1), new Object[] {
+				"XXX", "XXX", "XXX", 'X', IronManMod.Palladium });
+		GameRegistry.addRecipe(new ItemStack(Palladium, 9), new Object[] { "X",
+				'X', IronManMod.PalladiumBlock });
+		GameRegistry.addRecipe(new ItemStack(TitaniumPlating, 1), new Object[] {
+				"XX", "XX", 'X', IronManMod.Titanium });
+		GameRegistry.addRecipe(new ItemStack(TitaniumChestplate, 1),
+				new Object[] { "X X", "XXX", "XXX", 'X', IronManMod.Titanium });
+		GameRegistry.addRecipe(new ItemStack(PulseThrusters, 1),
+				new Object[] { "  T", "  T", " GT", 'G', Blocks.glass, 'T',
+						IronManMod.Titanium });
+		GameRegistry.addRecipe(new ItemStack(IronManBoots, 1), new Object[] {
+				"T T", "P P", 'T', IronManMod.TitaniumPlating, 'P',
+				IronManMod.PulseThrusters });
+		GameRegistry.addRecipe(new ItemStack(PalladiumCore, 1), new Object[] {
+				" T ", "TPT", " T ", 'T', IronManMod.Titanium, 'P',
+				IronManMod.Palladium });
+		GameRegistry.addRecipe(new ItemStack(VibraniumCore, 1), new Object[] {
+				" T ", "TVT", " T ", 'T', IronManMod.Titanium, 'V',
+				IronManMod.Vibranium });
+		GameRegistry
+				.addRecipe(new ItemStack(IronManArmorBase, 1),
+						new Object[] { "I I", "TBT", "ISI", 'T',
+								IronManMod.TitaniumPlating, 'S',
+								IronManMod.PowerCoreSocket, 'B',
+								IronManMod.TitaniumChestplate, 'I',
+								IronManMod.Titanium });
+		GameRegistry.addRecipe(new ItemStack(IronManBodyArmor, 1),
+				new Object[] { "T T", "PIP", "TTT", 'T',
+						IronManMod.TitaniumPlating, 'P',
+						IronManMod.PalladiumCore, 'I',
+						IronManMod.IronManArmorBase });
+		GameRegistry.addRecipe(new ItemStack(PowerCoreSocket, 1),
+				new Object[] { "TGT", "G G", "TGT", 'T', IronManMod.Titanium,
+						'G', Blocks.glass });
+		GameRegistry.addRecipe(new ItemStack(TitaniumLeggings, 1),
+				new Object[] { "TTT", "T T", "T T", 'T', IronManMod.Titanium });
+		GameRegistry.addRecipe(new ItemStack(TitaniumBlock, 1), new Object[] {
+				"TTT", "TTT", "TTT", 'T', Titanium });
+		GameRegistry.addRecipe(new ItemStack(Titanium, 9), new Object[] { "T",
+				'T', TitaniumBlock });
+		GameRegistry.addRecipe(new ItemStack(VibraniumBlock, 1), new Object[] {
+				"TTT", "TTT", "TTT", 'T', Vibranium });
+		GameRegistry.addRecipe(new ItemStack(Vibranium, 9), new Object[] { "T",
+				'T', VibraniumBlock });
+
+		GameRegistry.addSmelting(TitaniumOre.blockID, new ItemStack(Titanium),
+				0.7F);
+
+		GameRegistry.addSmelting(PalladiumOre.blockID, new ItemStack(Palladium,
+				2), 0.7F);
+
+		GameRegistry.addSmelting(VibraniumOre.blockID,
+				new ItemStack(Vibranium), 0.7F);
+	}
+
+	@PostInit
+	public static void postInit(FMLPostInitializationEvent evt) {
+
+	}
+}
