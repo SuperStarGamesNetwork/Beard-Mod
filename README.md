@@ -1,5 +1,3 @@
 Beard-Mod
 =========
-Fuck the world
-Fuck you all
-Don't Fuckin' copy any of this code or i will hunt you for the rest of your life
+This is the awesome compilation mod by RealCloudCraft and AresTheWarGod (Staff of S.S.G.N. And H.o.t.L.)
