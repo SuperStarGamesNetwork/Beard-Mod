@@ -44,6 +44,7 @@ public class PlayerTickHandler implements ITickHandler {
 
 		else if (!player.capabilities.isCreativeMode) {
 			player.capabilities.allowFlying = false;
+			player.capabilities.isFlying = false;
 		}
 	}
 
